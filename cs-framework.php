@@ -39,7 +39,7 @@
  */
 
 // ------------------------------------------------------------------------------------------------
-require_once plugin_dir_path( __FILE__ ) .'/cs-framework-path.php';
+require_once dirname( __FILE__ ) .'/cs-framework-path.php';
 // ------------------------------------------------------------------------------------------------
 
 if( ! function_exists( 'cs_framework_init' ) && ! class_exists( 'CSFramework' ) ) {
@@ -64,14 +64,16 @@ if( ! function_exists( 'cs_framework_init' ) && ! class_exists( 'CSFramework' ) 
     cs_locate_template( 'classes/options.class.php'    );
     cs_locate_template( 'classes/framework.class.php'  );
     cs_locate_template( 'classes/metabox.class.php'    );
+    cs_locate_template( 'classes/taxonomy.class.php'    );
     cs_locate_template( 'classes/shortcode.class.php'  );
     cs_locate_template( 'classes/customize.class.php'  );
 
     // configs
-    cs_locate_template( 'config/framework.config.php'  );
-    cs_locate_template( 'config/metabox.config.php'    );
-    cs_locate_template( 'config/shortcode.config.php'  );
-    cs_locate_template( 'config/customize.config.php'  );
+    require_once locate_template( 'includes/resource/framework.config.php'  );
+    require_once locate_template( 'includes/resource/metabox.config.php'    );
+    require_once locate_template( 'includes/resource/taxonomy.config.php'    );
+    require_once locate_template( 'includes/resource/shortcode.config.php'  );
+    require_once locate_template( 'includes/resource/customize.config.php'  );
 
   }
   add_action( 'init', 'cs_framework_init', 10 );
